@@ -22,16 +22,19 @@ export class HeroesComponent implements OnInit {
     this.selectedHero = hero;
   }
 
-  constructor(private heroService : HeroService) {
+  constructor(private heroService: HeroService) {
   }
 
   ngOnInit() {
     this.getHeroes();
   }
 
-  getHeroes(): void
-  {
-    this.heroService.getHeroes()
-    .subscribe(heroes => this.heroes = heroes);
+  getHeroes(): void {
+    this.heroService.getHeroes().subscribe(heroes => {
+      console.log('data response', heroes);
+      this.heroes = heroes;
+    });
+
+    console.log('after call');
   }
 }
